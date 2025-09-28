@@ -8,13 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <a href="https://paypal.me/HansjuergWuethrich" target="_blank" rel="noopener noreferrer" id="paypal-button">
+        <h1><span>3D Cover Converter</span><a href="https://paypal.me/HansjuergWuethrich" target="_blank" rel="noopener noreferrer" id="paypal-button">
             <img src="paypalme.png" alt="Donate via PayPal.Me">
-        </a>
-        <h1><img src="LOGO.PNG" alt="Logo" id="title-image"> 3D Cover Converter <img src="PreviewImage.png" alt="Preview" id="title-image-right"></h1>
+        </a><img src="LOGO.PNG" alt="Logo" id="title-image"><img src="PreviewImage.png" alt="Preview" id="title-image-right"></h1>
         <p>Select a directory with your 2D covers (JPG or PNG) to convert them into 3D boxes.</p>
         <div class="button-container">
-            <label for="image-input" class="file-label">Select Directory</label>
+            <button id="select-directory-button" class="file-label">Select Directory</button>
             <div id="zip-download-container-top"></div>
             <div id="save-all-container"></div>
         </div>
@@ -27,7 +26,7 @@
             </div>
         </div>
 
-        <input type="file" id="image-input" accept="image/png, image/jpeg" multiple webkitdirectory>
+
 
         <!-- New Processing Progress Bar -->
         <div id="processing-progress-container" class="progress-container" style="display: none;">

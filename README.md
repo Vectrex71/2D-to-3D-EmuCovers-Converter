@@ -1,5 +1,4 @@
-# 2D-to-3D-EmuCovers-Converter
-Convert 2D EmuCovers into nice looking 3D Boxes for a clean Emulator Collection
+# 3D Cover Converter
 
 This tool converts your 2D cover images (JPG or PNG) into 3D box images.
 

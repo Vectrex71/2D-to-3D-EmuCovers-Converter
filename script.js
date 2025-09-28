@@ -1,4 +1,4 @@
-const imageInput = document.getElementById('image-input');
+
 const outputContainer = document.getElementById('output-container');
 const zipDownloadContainerTop = document.getElementById('zip-download-container-top');
 const saveAllContainer = document.getElementById('save-all-container');
@@ -27,30 +27,63 @@ const processingProgressBarInner = document.getElementById('processing-progress-
 
 let currentGeneratedImages = [];
 
-imageInput.addEventListener('change', (event) => {
-    outputContainer.innerHTML = '';
-    zipDownloadContainerTop.innerHTML = '';
-    saveAllContainer.innerHTML = '';
-    zipDownloadContainerBottom.innerHTML = '';
-    downloadProgressContainer.style.display = 'none';
-    processingProgressContainer.style.display = 'none';
+const selectDirectoryButton = document.getElementById('select-directory-button');
 
-    const files = event.target.files;
-    const imageFiles = [];
+if (selectDirectoryButton) {
+    selectDirectoryButton.addEventListener('click', async () => {
+        try {
+            if (!('showDirectoryPicker' in window)) {
+                alert('Your browser does not support the File System Access API, which is required for this feature. Please use a modern browser like Chrome or Edge.');
+                return;
+            }
 
-    for (const file of files) {
-        if (file.type.startsWith('image/')) {
-            imageFiles.push(file);
+            const dirHandle = await window.showDirectoryPicker();
+            const imageFiles = [];
+            
+            // Show a generic "reading files" message first
+            processingProgressContainer.style.display = 'block';
+            processingProgressLabel.textContent = 'Reading files...';
+            processingProgressBarInner.style.width = '0%';
+
+
+            for await (const entry of dirHandle.values()) {
+                if (entry.kind === 'file' && (entry.name.toLowerCase().endsWith('.jpg') || entry.name.toLowerCase().endsWith('.jpeg') || entry.name.toLowerCase().endsWith('.png'))) {
+                    const file = await entry.getFile();
+                    imageFiles.push(file);
+                }
+            }
+            
+            if (imageFiles.length === 0) {
+                alert('No JPG or PNG images found in the selected directory.');
+                processingProgressContainer.style.display = 'none';
+                return;
+            }
+
+            const confirmation = confirm(`Are you sure? This will process ${imageFiles.length} images.`);
+            if (!confirmation) {
+                processingProgressContainer.style.display = 'none';
+                return;
+            }
+
+            outputContainer.innerHTML = '';
+            zipDownloadContainerTop.innerHTML = '';
+            saveAllContainer.innerHTML = '';
+            zipDownloadContainerBottom.innerHTML = '';
+            downloadProgressContainer.style.display = 'none';
+            
+            document.querySelector('.container').classList.add('loading');
+            updateProcessingProgress(0, imageFiles.length);
+            setTimeout(() => processImages(imageFiles), 100);
+
+        } catch (err) {
+            if (err.name !== 'AbortError') {
+                console.error('Error selecting directory:', err);
+                alert('An error occurred while selecting the directory.');
+            }
+            processingProgressContainer.style.display = 'none';
         }
-    }
-
-    if (imageFiles.length > 0) {
-        document.querySelector('.container').classList.add('loading');
-        processingProgressContainer.style.display = 'block';
-        updateProcessingProgress(0, imageFiles.length);
-        setTimeout(() => processImages(imageFiles), 100); // setTimeout to allow UI to update
-    }
-});
+    });
+}
 
 function updateProcessingProgress(current, total) {
     const percentage = total > 0 ? (current / total) * 100 : 0;
