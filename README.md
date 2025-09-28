@@ -1,6 +1,6 @@
 # 3D Cover Converter
 
-![Logo](LOGO.PNG.png)
+![Logo](Logo.png)
 
 A web-based tool to convert your 2D cover images (JPG or PNG) into 3D box images. This tool runs entirely in your browser, ensuring your files' privacy.
 
