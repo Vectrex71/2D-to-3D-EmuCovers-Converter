@@ -45,7 +45,7 @@ A web-based tool to convert your 2D cover images (JPG or PNG) into 3D box images
 If you find this tool helpful and would like to support its development, please consider a small donation.
 
 <a href="https://paypal.me/HansjuergWuethrich" target="_blank" rel="noopener noreferrer">
-    <img src="PayPalme.png" alt="Donate via PayPal.Me" width="200">
+    <img src="paypal-donate-button.png" alt="Donate via PayPal.Me" width="200">
 </a>
 
 ## Contributing
