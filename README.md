@@ -6,7 +6,7 @@ A web-based tool to convert your 2D cover images (JPG or PNG) into 3D box images
 
 ![Preview](PreviewCovers.png)
 
-## Live Demo
+## Try it here
 
 [**Try the 3D Cover Converter here!**](https://vectrex71.github.io/2D-to-3D-EmuCovers-Converter/)
 
