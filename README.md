@@ -24,7 +24,7 @@ A web-based tool to convert your 2D cover images (JPG or PNG) into 3D box images
 
 ## How to Use
 
-1.  **Open the tool:** [Click here](https://vectrex71.github.io/2D-to-3D-EmuCovers-Converter/) to open the live demo.
+1.  **Open the tool:** [Click here](https://vectrex71.github.io/2D-to-3D-EmuCovers-Converter/) to open the Application.
 2.  **Select Directory:** Click the "Select Directory" button and choose the folder containing your 2D cover images.
 3.  **Confirm:** A confirmation prompt will show how many images were found. Click "OK" to start the conversion.
 4.  **Processing:** Wait for the tool to process all the images. You can see the progress in the processing bar.
