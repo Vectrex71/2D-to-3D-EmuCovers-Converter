@@ -4,7 +4,7 @@
 
 A web-based tool to convert your 2D cover images (JPG or PNG) into 3D box images. This tool runs entirely in your browser, ensuring your files' privacy.
 
-![Preview](PreviewImage.png)
+![Preview](PreviewCovers.png)
 
 ## Live Demo
 
